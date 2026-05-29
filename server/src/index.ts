@@ -5,8 +5,10 @@ import cors from 'cors'
 import { env } from './config/env'
 import { errorHandler } from './middlewares/error.middleware'
 
-import authRoutes  from './modules/auth/auth.routes'
-import usersRoutes from './modules/users/users.routes'
+import authRoutes       from './modules/auth/auth.routes'
+import usersRoutes      from './modules/users/users.routes'
+import trailsRoutes     from './modules/trails/trails.routes'
+import activitiesRoutes from './modules/activities/activities.routes'
 
 const app = express()
 
@@ -14,13 +16,13 @@ app.use(cors())
 app.use(express.json())
 
 // ── Rotas ──────────────────────────────────────────────────────────────────
-app.use('/api/auth',  authRoutes)
-app.use('/api/users', usersRoutes)
+app.use('/api/auth',       authRoutes)
+app.use('/api/users',      usersRoutes)
+app.use('/api/trails',     trailsRoutes)
+app.use('/api/activities', activitiesRoutes)
 
-// app.use('/api/trails',     trailsRoutes)
-// app.use('/api/activities', activitiesRoutes)
-// app.use('/api/projects',   projectsRoutes)
-// app.use('/api/admin',      adminRoutes)
+// app.use('/api/projects', projectsRoutes)
+// app.use('/api/admin',    adminRoutes)
 
 // ── Health check ───────────────────────────────────────────────────────────
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }))
