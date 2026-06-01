@@ -13,6 +13,8 @@ import ActivityPage from './pages/ActivityPage';
 import ProjectsPage from './pages/ProjectsPage';
 import CommunityPage from './pages/CommunityPage';
 import AdminPage from './pages/AdminPage';
+import ConquistasPage from './pages/ConquistasPage';
+import PerfilPage from './pages/PerfilPage';
 
 import './styles/global.css';
 
@@ -102,6 +104,27 @@ export default function App() {
               <PrivateRoute>
                 <AppLayout>
                   <ProjectsPage />
+                </AppLayout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/conquistas"
+            element={
+              <PrivateRoute>
+                <AppLayout hideFooter>
+                  <ConquistasPage />
+                </AppLayout>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/perfil"
+            element={
+              <PrivateRoute>
+                <AppLayout hideFooter>
+                  <PerfilPage />
                 </AppLayout>
               </PrivateRoute>
             }

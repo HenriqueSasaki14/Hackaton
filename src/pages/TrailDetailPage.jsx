@@ -132,8 +132,8 @@ export default function TrailDetailPage() {
                       <button
                         className={nodeClass}
                         onClick={() => {
-                          if (!isLocked && user) navigate(`/atividade/${activity.id}`)
-                          else if (!user) navigate('/login')
+                          if (!isLocked && user) navigate(`/atividade/${id}/${activity.id}`)
+                          else if (!user) navigate('/auth')
                         }}
                         disabled={isLocked}
                         title={isLocked ? 'Complete a atividade anterior' : activity.title}

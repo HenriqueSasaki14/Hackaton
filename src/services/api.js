@@ -109,6 +109,8 @@ export const usersApi = {
 
   updateMe: (data) => put('/api/users/me', data, true),
 
+  deleteMe: () => del('/api/users/me', true),
+
   upgradePremium: () => post('/api/users/upgrade-premium', {}, true),
 }
 
@@ -159,6 +161,14 @@ export const projectsApi = {
   publish: (id) => post(`/api/projects/${id}/publish`, {}, true),
 
   toggleLike: (id) => post(`/api/projects/${id}/like`, {}, true),
+}
+
+// ──────────────────────────────────────────────────────────────
+// BADGES
+// ──────────────────────────────────────────────────────────────
+
+export const badgesApi = {
+  getAll: () => get('/api/badges'),
 }
 
 // ──────────────────────────────────────────────────────────────
