@@ -11,24 +11,23 @@ import trailsRoutes     from './modules/trails/trails.routes'
 import activitiesRoutes from './modules/activities/activities.routes'
 import projectsRoutes   from './modules/projects/projects.routes'
 import adminRoutes      from './modules/admin/admin.routes'
+import badgesRoutes     from './modules/badges/badges.routes'
 
 const app = express()
 
 app.use(cors())
-app.use(express.json())
+app.use(express.json({ limit: '5mb' }))
 
-// ── Rotas ──────────────────────────────────────────────────────────────────
 app.use('/api/auth',       authRoutes)
 app.use('/api/users',      usersRoutes)
 app.use('/api/trails',     trailsRoutes)
 app.use('/api/activities', activitiesRoutes)
 app.use('/api/projects',   projectsRoutes)
 app.use('/api/admin',      adminRoutes)
+app.use('/api/badges',     badgesRoutes)
 
-// ── Health check ───────────────────────────────────────────────────────────
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }))
 
-// ── Handler global de erros (deve ser o último middleware) ─────────────────
 app.use(errorHandler)
 
 app.listen(env.PORT, () => {

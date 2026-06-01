@@ -1,0 +1,235 @@
+.trail-detail-page { background: var(--off-white); min-height: 100vh; }
+
+.trail-detail-hero {
+  background: linear-gradient(135deg, #FFFBE6 0%, var(--white) 100%);
+  padding: 36px 0 32px;
+}
+.trail-detail-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.trail-detail-back {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gray-mid);
+  transition: color var(--transition);
+}
+.trail-detail-back:hover { color: var(--black); }
+
+.trail-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.trail-detail-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.trail-detail-meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.trail-detail-title {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.trail-detail-desc {
+  font-size: 0.95rem;
+  color: var(--gray-mid);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.trail-detail-progress {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  border: 1.5px solid var(--gray-border);
+  max-width: 500px;
+}
+.trail-detail-progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gray-text);
+  margin-bottom: 10px;
+}
+.trail-detail-progress-count {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--gray-mid);
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* ── Conteúdo ── */
+.trail-detail-content {
+  padding: 48px 24px 64px;
+}
+.trail-detail-path-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--black);
+  margin-bottom: 36px;
+}
+
+/* ── Caminho ── */
+.trail-path {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.path-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 16px;
+}
+.path-left  { justify-content: flex-start; padding-left: 80px; }
+.path-right { justify-content: flex-end;   padding-right: 80px; }
+
+.path-item-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.path-right .path-item-inner { flex-direction: row-reverse; text-align: right; }
+
+.path-connector {
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  width: 3px;
+  height: 20px;
+  background: var(--gray-border);
+  transform: translateX(-50%);
+  border-radius: var(--radius-full);
+}
+.connector-active { background: var(--green); }
+
+/* Nó */
+.path-node {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid transparent;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+.node-done {
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 4px 16px rgba(81,207,102,0.35);
+}
+.node-done:hover { transform: scale(1.08); }
+
+.node-current {
+  background: var(--yellow);
+  border-color: var(--yellow-dark);
+  box-shadow: var(--shadow-yellow);
+  animation: currentPulse 2s ease-in-out infinite;
+}
+.node-current:hover { transform: scale(1.08); }
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: var(--shadow-yellow); }
+  50% { box-shadow: 0 0 0 8px rgba(255,212,59,0.2); }
+}
+
+.node-locked {
+  background: var(--gray-light);
+  border-color: var(--gray-border);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.node-icon { font-size: 1.5rem; pointer-events: none; }
+
+.path-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.path-item-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--gray-mid);
+}
+.path-item-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--black);
+  max-width: 200px;
+}
+.path-item-xp {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.path-done-tag {
+  background: var(--green-pale);
+  color: #1e6b30;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+}
+
+/* Legenda */
+.trail-path-legend {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gray-text);
+}
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.legend-dot.done    { background: var(--green); }
+.legend-dot.current { background: var(--yellow); }
+.legend-dot.locked  { background: var(--gray-border); }
+
+@media (max-width: 640px) {
+  .path-left  { padding-left: 20px; }
+  .path-right { padding-right: 20px; justify-content: flex-start; }
+  .path-right .path-item-inner { flex-direction: row; text-align: left; }
+  .trail-detail-header { flex-direction: column; }
+}

@@ -125,35 +125,9 @@ model UserBadge {
   @@unique([user_id, badge_id])
 }
 
-enum Role {
-  USER
-  ADMIN
-}
-
-enum Difficulty {
-  BEGINNER
-  INTERMEDIATE
-  ADVANCED
-}
-
-enum ActivityType {
-  FILL_BLANK
-  FIND_ERROR
-  MULTIPLE_CHOICE
-}
-
-enum ProgressStatus {
-  COMPLETED
-  SKIPPED
-}
-
-enum ProjectStatus {
-  DRAFT
-  PUBLISHED
-}
-
-enum BadgeCondition {
-  STREAK
-  XP
-  TRAIL_COMPLETED
-}
+enum Role           { USER ADMIN }
+enum Difficulty     { BEGINNER INTERMEDIATE ADVANCED }
+enum ActivityType   { FILL_BLANK FIND_ERROR MULTIPLE_CHOICE }
+enum ProgressStatus { COMPLETED SKIPPED }
+enum ProjectStatus  { DRAFT PUBLISHED }
+enum BadgeCondition { STREAK XP TRAIL_COMPLETED }
