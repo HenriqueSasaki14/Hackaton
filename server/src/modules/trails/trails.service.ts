@@ -75,6 +75,20 @@ export async function getTrailDetail(trailId: string, userId?: string) {
 
   if (!trail) throw Object.assign(new Error('Trilha não encontrada'), { status: 404 })
 
+  // Verifica acesso premium
+  if (trail.is_premium) {
+    if (!userId) throw Object.assign(new Error('Conteúdo premium'), { status: 403 })
+    const user = await prisma.user.findUnique({ where: { id: userId }, select: { is_premium: true } })
+    if (!user?.is_premium) throw Object.assign(new Error('Conteúdo premium'), { status: 403 })
+  }
+
+  // Verifica pré-requisito
+  if (trail.prerequisite_trail_id) {
+    if (!userId) throw Object.assign(new Error('Conclua a trilha anterior primeiro'), { status: 403 })
+    const prereqDone = await isTrailCompleted(userId, trail.prerequisite_trail_id)
+    if (!prereqDone) throw Object.assign(new Error('Conclua a trilha anterior primeiro'), { status: 403 })
+  }
+
   let activitiesWithStatus = trail.activities.map((a) => ({
     ...a,
     user_status: null as string | null,

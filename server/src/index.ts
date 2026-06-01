@@ -9,6 +9,8 @@ import authRoutes       from './modules/auth/auth.routes'
 import usersRoutes      from './modules/users/users.routes'
 import trailsRoutes     from './modules/trails/trails.routes'
 import activitiesRoutes from './modules/activities/activities.routes'
+import projectsRoutes   from './modules/projects/projects.routes'
+import adminRoutes      from './modules/admin/admin.routes'
 
 const app = express()
 
@@ -20,9 +22,8 @@ app.use('/api/auth',       authRoutes)
 app.use('/api/users',      usersRoutes)
 app.use('/api/trails',     trailsRoutes)
 app.use('/api/activities', activitiesRoutes)
-
-// app.use('/api/projects', projectsRoutes)
-// app.use('/api/admin',    adminRoutes)
+app.use('/api/projects',   projectsRoutes)
+app.use('/api/admin',      adminRoutes)
 
 // ── Health check ───────────────────────────────────────────────────────────
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }))
